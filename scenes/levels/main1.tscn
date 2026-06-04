@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cxcsdi1sivqsm"]
+
+[ext_resource type="Script" uid="uid://dipwhkt3s7osj" path="res://scripts/main.gd" id="1_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://x36n2npem8lt" path="res://assets/skies/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://lgj212cpoe1b" path="res://scenes/player.tscn" id="2_0wfyh"]
+[ext_resource type="MeshLibrary" uid="uid://dm11yn345avtb" path="res://mesh_library_2.tres" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://b5f874tfwfkx7" path="res://scenes/canvas_layer.tscn" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://brdwl3pncbguw" path="res://scripts/death_zone.gd" id="6_tefeu"]
+[ext_resource type="AudioStream" uid="uid://dgu8fkekcsk15" path="res://assets/audio/coin.ogg" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://bhis72c4rodnk" path="res://scenes/levels/main2.tscn" id="14_lmuea"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jyhfs"]
+panorama = ExtResource("1_sugp2")
+
+[sub_resource type="Sky" id="Sky_0wfyh"]
+sky_material = SubResource("PanoramaSkyMaterial_jyhfs")
+
+[sub_resource type="Environment" id="Environment_sugp2"]
+background_mode = 2
+background_energy_multiplier = 0.7
+sky = SubResource("Sky_0wfyh")
+tonemap_mode = 2
+glow_enabled = true
+glow_strength = 1.19
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o6xl0"]
+size = Vector3(75.6372, 1, 104.933)
+
+[node name="Main1" type="Node3D" unique_id=619891465]
+script = ExtResource("1_a8y0u")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1661672298]
+environment = SubResource("Environment_sugp2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1405939253]
+transform = Transform3D(-0.127497, -0.955268, -0.266848, -0.872697, -0.0198043, 0.48786, -0.471321, 0.295078, -0.831135, 0.612295, 5.8524, 0.923138)
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="." unique_id=705557825]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+mesh_library = ExtResource("2_sugp2")
+cell_size = Vector3(2, 1, 2)
+metadata/_editor_floor_ = Vector3(0, 6, 0)
+
+[node name="Player" parent="." unique_id=727270637 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.6793, 1)
+
+[node name="DeathZone" type="Area3D" parent="." unique_id=862193663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 17)
+script = ExtResource("6_tefeu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone" unique_id=747651683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02263, 0, -22.4663)
+shape = SubResource("BoxShape3D_o6xl0")
+
+[node name="Containers" type="Node3D" parent="." unique_id=400422215]
+
+[node name="CoinsContainer" type="Node3D" parent="Containers" unique_id=1790264257]
+
+[node name="Obstacles" type="Node3D" parent="Containers" unique_id=10795655]
+
+[node name="CanvasLayer" parent="." unique_id=993789413 instance=ExtResource("5_tbgi4")]
+target_scene = ExtResource("14_lmuea")
+
+[node name="CoinAudio" type="AudioStreamPlayer" parent="." unique_id=1085507229 groups=["CoinAudio"]]
+stream = ExtResource("10_choun")
+
+[connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]

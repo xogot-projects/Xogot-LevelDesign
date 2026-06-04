@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://c3xwgco5qj585"]
+
+[ext_resource type="Script" uid="uid://dipwhkt3s7osj" path="res://scripts/main.gd" id="1_eio24"]
+[ext_resource type="Texture2D" uid="uid://x36n2npem8lt" path="res://assets/skies/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_3jktu"]
+[ext_resource type="MeshLibrary" uid="uid://dm11yn345avtb" path="res://mesh_library_2.tres" id="3_cprly"]
+[ext_resource type="PackedScene" uid="uid://lgj212cpoe1b" path="res://scenes/player.tscn" id="4_xcb5o"]
+[ext_resource type="Script" uid="uid://brdwl3pncbguw" path="res://scripts/death_zone.gd" id="5_1e1f0"]
+[ext_resource type="PackedScene" uid="uid://cdv2u7wrvefd4" path="res://scenes/coin.tscn" id="6_dqo10"]
+[ext_resource type="PackedScene" uid="uid://b68h7uq7u1faa" path="res://scenes/inherited_obstacles/saw.tscn" id="10_h7lsp"]
+[ext_resource type="PackedScene" uid="uid://cis5wybjvfulb" path="res://scenes/inherited_obstacles/spikes.tscn" id="11_bqnku"]
+[ext_resource type="PackedScene" uid="uid://cqf0acwghhe8n" path="res://scenes/inherited_obstacles/spike_block_wide.tscn" id="12_aweui"]
+[ext_resource type="PackedScene" uid="uid://b5f874tfwfkx7" path="res://scenes/canvas_layer.tscn" id="13_bngrh"]
+[ext_resource type="AudioStream" uid="uid://dgu8fkekcsk15" path="res://assets/audio/coin.ogg" id="14_0r8cl"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jyhfs"]
+panorama = ExtResource("2_3jktu")
+
+[sub_resource type="Sky" id="Sky_0wfyh"]
+sky_material = SubResource("PanoramaSkyMaterial_jyhfs")
+
+[sub_resource type="Environment" id="Environment_sugp2"]
+background_mode = 2
+background_energy_multiplier = 0.7
+sky = SubResource("Sky_0wfyh")
+tonemap_mode = 2
+glow_enabled = true
+glow_strength = 1.19
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o6xl0"]
+size = Vector3(252.25, 1, 262.5)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_b0vgl"]
+panorama = ExtResource("2_3jktu")
+
+[sub_resource type="Sky" id="Sky_wttyn"]
+sky_material = SubResource("PanoramaSkyMaterial_b0vgl")
+
+[sub_resource type="Environment" id="Environment_5s1pl"]
+background_mode = 2
+background_energy_multiplier = 0.7
+sky = SubResource("Sky_wttyn")
+tonemap_mode = 2
+glow_enabled = true
+glow_strength = 1.19
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eio24"]
+size = Vector3(128.75, 1, 175.5)
+
+[sub_resource type="PackedScene" id="PackedScene_3jktu"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(5, 5, 37, 36, 2, 0, 0),
+"editable_instances": [],
+"id_paths": [],
+"names": PackedStringArray("Main3", "script", "Node3D", "WorldEnvironment", "environment", "DirectionalLight3D", "transform", "shadow_enabled", "GridMap", "mesh_library", "cell_size", "data", "metadata/_editor_floor_", "Player", "DeathZone", "Area3D", "CollisionShape3D", "shape", "Containers", "CoinsContainer", "Coin", "Coin2", "Coin3", "Coin4", "Coin5", "Coin6", "Coin7", "Coin8", "Obstacles", "Saw", "Spikes", "SpikeBlockWide", "CanvasLayer", "CoinAudio", "stream", "AudioStreamPlayer", "_on_body_entered", "body_entered"),
+"node_count": 23,
+"node_ids": PackedInt32Array(619891465, 1661672298, 1405939253, 705557825, 727270637, 862193663, 747651683, 400422215, 1790264257, 744254750, 1114749510, 469050904, 728897689, 930615315, 856195221, 1456752583, 173017309, 10795655, 1866674942, 2043348026, 1876891612, 993789413, 1085507229),
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 1, 4, 1, 0, 0, 0, 5, 5, -1, 2, 6, 2, 7, 3, 0, 0, 0, 8, 8, -1, 5, 6, 4, 9, 5, 10, 6, 11, 7, 12, 8, 0, 0, 0, 2147483647, 13, 9, 1, 6, 10, 0, 0, 0, 15, 14, -1, 2, 6, 11, 1, 12, 0, 5, 0, 16, 16, -1, 2, 6, 13, 17, 14, 0, 0, 0, 2, 18, -1, 0, 0, 7, 0, 2, 19, -1, 0, 0, 8, 0, 2147483647, 20, 15, 1, 6, 16, 0, 8, 0, 2147483647, 21, 15, 1, 6, 17, 0, 8, 0, 2147483647, 22, 15, 1, 6, 18, 0, 8, 0, 2147483647, 23, 15, 1, 6, 19, 0, 8, 0, 2147483647, 24, 15, 1, 6, 20, 0, 8, 0, 2147483647, 25, 15, 1, 6, 21, 0, 8, 0, 2147483647, 26, 15, 1, 6, 22, 0, 8, 0, 2147483647, 27, 15, 1, 6, 23, 0, 7, 0, 2, 28, -1, 0, 0, 17, 0, 2147483647, 29, 24, 1, 6, 25, 0, 17, 0, 2147483647, 30, 26, 1, 6, 27, 0, 17, 0, 2147483647, 31, 28, 1, 6, 29, 0, 0, 0, 2147483647, 32, 30, 0, 0, 0, 0, 35, 33, -1, 1, 34, 31, 1, 33),
+"variants": [ExtResource("1_eio24"), SubResource("Environment_5s1pl"), Transform3D(-0.127497, -0.955268, -0.266848, -0.872697, -0.0198043, 0.48786, -0.471321, 0.295078, -0.831135, 0.612295, 5.8524, 0.923138), true, Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0), ExtResource("3_cprly"), Vector3(2, 1, 2), {
+"cells": PackedInt32Array(0, 65535, 3, 0, 65533, 3, 0, 65531, 3, 0, 65529, 3, 65536, 65527, 1048580, 131072, 65525, 1048580, 196606, 65525, 1048582, 196604, 65525, 1048582, 196602, 65525, 1048582, 262137, 65526, 1441797, 327672, 65527, 1048581, 393207, 65528, 1048581, 393206, 65529, 1048579, 393206, 65531, 1048579, 393206, 65533, 1048579, 393207, 65535, 1048579, 393206, 65535, 1048579, 393205, 65535, 1048579, 393205, 0, 1048579, 393207, 0, 1048579, 393206, 0, 1048579, 393207, 1, 1048579, 393206, 1, 1048579, 393205, 1, 1048579, 458742, 1, 655372)
+}, Vector3(0, 6, 0), ExtResource("4_xcb5o"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.6793, 1), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 17), ExtResource("5_1e1f0"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.420969, 0, -44.1828), SubResource("BoxShape3D_eio24"), ExtResource("6_dqo10"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 5), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 13), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 19), Transform3D(-4.37114e-08, 0, 1, 3.55271e-15, 1, 1.55294e-22, -1, 0, -4.37114e-08, 3, 4, 21), Transform3D(-4.37114e-08, 0, 1, 3.55271e-15, 1, 1.55294e-22, -1, 0, -4.37114e-08, 11, 4, 21), Transform3D(-1, 2.11758e-22, -8.74228e-08, 3.55271e-15, 1, 1.55294e-22, 8.74228e-08, -2.11758e-22, -1, 15, 6, 17), Transform3D(-1, 2.11758e-22, -8.74228e-08, 3.55271e-15, 1, 1.55294e-22, 8.74228e-08, -2.11758e-22, -1, 19, 7, 9), Transform3D(-1, 2.11758e-22, -8.74228e-08, 3.55271e-15, 1, 1.55294e-22, 8.74228e-08, -2.11758e-22, -1, 19, 7, -1), ExtResource("10_h7lsp"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 3), ExtResource("11_bqnku"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 4.5), ExtResource("12_aweui"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.75, 7), ExtResource("13_bngrh"), ExtResource("14_0r8cl")],
+"version": 3
+}
+
+[node name="Main3" type="Node3D" unique_id=619891465]
+script = ExtResource("1_eio24")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1661672298]
+environment = SubResource("Environment_sugp2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1405939253]
+transform = Transform3D(-0.127497, -0.955268, -0.266848, -0.872697, -0.0198043, 0.48786, -0.471321, 0.295078, -0.831135, 0.612295, 5.8524, 0.923138)
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="." unique_id=705557825]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+mesh_library = ExtResource("3_cprly")
+cell_size = Vector3(2, 1, 2)
+metadata/_editor_floor_ = Vector3(0, 6, 0)
+
+[node name="Player" parent="." unique_id=727270637 instance=ExtResource("4_xcb5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.6793, 1)
+
+[node name="DeathZone" type="Area3D" parent="." unique_id=862193663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 17)
+script = ExtResource("5_1e1f0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone" unique_id=747651683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.216232, 0, 21.067207)
+shape = SubResource("BoxShape3D_o6xl0")
+
+[node name="Containers" type="Node3D" parent="." unique_id=400422215]
+
+[node name="CoinsContainer" type="Node3D" parent="Containers" unique_id=1790264257]
+
+[node name="Obstacles" type="Node3D" parent="Containers" unique_id=10795655]
+
+[node name="CanvasLayer" parent="." unique_id=993789413 instance=ExtResource("13_bngrh")]
+target_scene = SubResource("PackedScene_3jktu")
+
+[node name="CoinAudio" type="AudioStreamPlayer" parent="." unique_id=1085507229 groups=["CoinAudio"]]
+stream = ExtResource("14_0r8cl")
+
+[connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]

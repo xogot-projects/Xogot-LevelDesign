@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b8fjlwekkd1c3"]
+
+[node name="BaseObstacle" type="Area3D" unique_id=1289292813]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1654774549]
+
+[node name="Model" type="Node3D" parent="." unique_id=22373208]

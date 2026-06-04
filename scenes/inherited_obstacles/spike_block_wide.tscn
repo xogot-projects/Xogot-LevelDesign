@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cqf0acwghhe8n"]
+
+[ext_resource type="Script" uid="uid://7o58m5fe6dpj" path="res://scripts/obstacles/spike_block_wide.gd" id="2_c5fs6"]
+[ext_resource type="PackedScene" uid="uid://5qkao8b4ptqi" path="res://assets/models/objects/GLB format/spike-block-wide.glb" id="2_rkq8e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c5fs6"]
+radius = 0.36084
+height = 2.21118
+
+[node name="SpikeBlockWide" type="Area3D" unique_id=814440012]
+script = ExtResource("2_c5fs6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=35298224]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0377197, 0.509666, 0)
+shape = SubResource("CapsuleShape3D_c5fs6")
+
+[node name="Model" type="Node3D" parent="." unique_id=622602999]
+
+[node name="spike-block-wide2" parent="Model" unique_id=1895694363 instance=ExtResource("2_rkq8e")]

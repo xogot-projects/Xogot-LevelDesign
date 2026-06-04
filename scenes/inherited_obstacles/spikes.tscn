@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cis5wybjvfulb"]
+
+[ext_resource type="PackedScene" uid="uid://35avu8rotird" path="res://assets/models/objects/GLB format/trap-spikes-large.glb" id="2_o1ja3"]
+[ext_resource type="Script" uid="uid://dnd5gndm851e8" path="res://scripts/obstacles/spikes.gd" id="2_s5gmh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s5gmh"]
+size = Vector3(0.734863, 0.235352, 0.765686)
+
+[node name="Spikes" type="Area3D" unique_id=508389929]
+script = ExtResource("2_s5gmh")
+can_rotate = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=281657922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00317383, 0.12207, 0.00106812)
+shape = SubResource("BoxShape3D_s5gmh")
+
+[node name="Model" type="Node3D" parent="." unique_id=1822438382]
+
+[node name="trap-spikes-large2" parent="Model" unique_id=1860378560 instance=ExtResource("2_o1ja3")]

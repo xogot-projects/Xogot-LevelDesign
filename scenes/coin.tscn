@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdv2u7wrvefd4"]
+
+[ext_resource type="Script" uid="uid://sayf127ylib8" path="res://scripts/coin.gd" id="1_i64fm"]
+[ext_resource type="PackedScene" uid="uid://bfgdan0ysoqg" path="res://assets/models/objects/GLB format/coin-gold.glb" id="1_rwqht"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rwqht"]
+radius = 0.25
+height = 0.5
+
+[node name="Coin" type="Area3D" groups=["Coin"]]
+script = ExtResource("1_i64fm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20498, 0)
+shape = SubResource("CapsuleShape3D_rwqht")
+
+[node name="coin-gold2" parent="." instance=ExtResource("1_rwqht")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

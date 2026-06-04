@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0o78pjdexacs"]
+
+[ext_resource type="PackedScene" uid="uid://bfs18knsuxjf7" path="res://assets/models/objects/GLB format/saw.glb" id="1_iiwqd"]
+[ext_resource type="Script" uid="uid://buxeyhoj5y4ta" path="res://scripts/obstacles/base_obstacle.gd" id="1_wxn5r"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iiwqd"]
+radius = 0.347474
+
+[node name="Saw" type="Area3D"]
+script = ExtResource("1_wxn5r")
+
+[node name="saw2" parent="." instance=ExtResource("1_iiwqd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_iiwqd")
