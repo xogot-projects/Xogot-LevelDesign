@@ -14,13 +14,13 @@ panorama = ExtResource("1_sugp2")
 
 [sub_resource type="Sky" id="Sky_0wfyh"]
 sky_material = SubResource("PanoramaSkyMaterial_jyhfs")
+radiance_size = 2
 
 [sub_resource type="Environment" id="Environment_sugp2"]
 background_mode = 2
 background_energy_multiplier = 0.7
 sky = SubResource("Sky_0wfyh")
 tonemap_mode = 2
-glow_enabled = true
 glow_strength = 1.19
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6xl0"]
