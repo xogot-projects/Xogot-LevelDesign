@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://c3rom2faqmosr"]
+
+[ext_resource type="Script" uid="uid://dipwhkt3s7osj" path="res://scripts/main.gd" id="1_su3td"]
+[ext_resource type="Texture2D" uid="uid://x36n2npem8lt" path="res://assets/skies/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_nhyrl"]
+[ext_resource type="MeshLibrary" uid="uid://dm11yn345avtb" path="res://mesh_library_2.tres" id="3_piq04"]
+[ext_resource type="PackedScene" uid="uid://lgj212cpoe1b" path="res://scenes/player.tscn" id="4_to66l"]
+[ext_resource type="Script" uid="uid://xqd5y7vkq4l2" path="res://addons/proto_controller/proto_controller.gd" id="5_ck2c4"]
+[ext_resource type="Script" uid="uid://brdwl3pncbguw" path="res://scripts/death_zone.gd" id="6_g5my4"]
+[ext_resource type="PackedScene" uid="uid://cdv2u7wrvefd4" path="res://scenes/coin.tscn" id="7_dyutv"]
+[ext_resource type="Script" uid="uid://sayf127ylib8" path="res://scripts/coin.gd" id="8_ry83k"]
+[ext_resource type="PackedScene" uid="uid://b68h7uq7u1faa" path="res://scenes/inherited_obstacles/saw.tscn" id="9_s8253"]
+[ext_resource type="Script" uid="uid://dgnlh4yeq4jq4" path="res://scripts/obstacles/saw.gd" id="10_tkkcn"]
+[ext_resource type="PackedScene" uid="uid://cis5wybjvfulb" path="res://scenes/inherited_obstacles/spikes.tscn" id="11_xetqi"]
+[ext_resource type="Script" uid="uid://dnd5gndm851e8" path="res://scripts/obstacles/spikes.gd" id="12_aexi6"]
+[ext_resource type="PackedScene" uid="uid://cqf0acwghhe8n" path="res://scenes/inherited_obstacles/spike_block_wide.tscn" id="13_68ix2"]
+[ext_resource type="Script" uid="uid://7o58m5fe6dpj" path="res://scripts/obstacles/spike_block_wide.gd" id="14_xdvhj"]
+[ext_resource type="PackedScene" uid="uid://b5f874tfwfkx7" path="res://scenes/canvas_layer.tscn" id="15_05emn"]
+[ext_resource type="Script" uid="uid://brm5tvxyq1a8s" path="res://scripts/canvas_layer.gd" id="16_10qxy"]
+[ext_resource type="PackedScene" uid="uid://cvubfkyvkplnn" path="res://scenes/menu.tscn" id="17_xef1r"]
+[ext_resource type="AudioStream" uid="uid://dgu8fkekcsk15" path="res://assets/audio/coin.ogg" id="18_pdp4c"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_b0vgl"]
+panorama = ExtResource("2_nhyrl")
+
+[sub_resource type="Sky" id="Sky_wttyn"]
+sky_material = SubResource("PanoramaSkyMaterial_b0vgl")
+
+[sub_resource type="Environment" id="Environment_5s1pl"]
+background_mode = 2
+background_energy_multiplier = 0.7
+sky = SubResource("Sky_wttyn")
+tonemap_mode = 2
+glow_enabled = true
+glow_strength = 1.19
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eio24"]
+size = Vector3(128.75, 1, 175.5)
+
+[node name="Main3" type="Node3D" unique_id=619891465]
+script = ExtResource("1_su3td")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1661672298]
+environment = SubResource("Environment_5s1pl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1405939253]
+transform = Transform3D(-0.127497, -0.955268, -0.266848, -0.872697, -0.0198043, 0.48786, -0.471321, 0.295078, -0.831135, 0.612295, 5.8524, 0.923138)
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="." unique_id=705557825]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+mesh_library = ExtResource("3_piq04")
+cell_size = Vector3(2, 1, 2)
+data = {
+"cells": PackedInt32Array(0, 65535, 3, 0, 65533, 3, 0, 65531, 3, 0, 65529, 3, 65536, 65527, 1048580, 131072, 65525, 1048580, 196606, 65525, 1048582, 196604, 65525, 1048582, 196602, 65525, 1048582, 262137, 65526, 1441797, 327672, 65527, 1048581, 393207, 65528, 1048581, 393206, 65529, 1048579, 393206, 65531, 1048579, 393206, 65533, 1048579, 393207, 65535, 1048579, 393206, 65535, 1048579, 393205, 65535, 1048579, 393205, 0, 1048579, 393207, 0, 1048579, 393206, 0, 1048579, 393207, 1, 1048579, 393206, 1, 1048579, 393205, 1, 1048579, 458742, 1, 655372)
+}
+metadata/_editor_floor_ = Vector3(0, 6, 0)
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=727270637 groups=["Player"] instance=ExtResource("4_to66l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.6793, 1)
+script = ExtResource("5_ck2c4")
+base_speed = 3.5
+jump_velocity = 7.0
+input_left = "ui_right"
+input_right = "ui_left"
+input_forward = "ui_down"
+input_back = "ui_up"
+input_jump = "jump"
+
+[node name="DeathZone" type="Area3D" parent="." unique_id=862193663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 17)
+script = ExtResource("6_g5my4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone" unique_id=747651683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.420969, 0, -44.1828)
+shape = SubResource("BoxShape3D_eio24")
+
+[node name="Containers" type="Node3D" parent="." unique_id=400422215]
+
+[node name="CoinsContainer" type="Node3D" parent="Containers" unique_id=1790264257]
+
+[node name="Coin" type="Area3D" parent="Containers/CoinsContainer" unique_id=744254750 groups=["Coin"] instance=ExtResource("7_dyutv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 5)
+script = ExtResource("8_ry83k")
+
+[node name="Coin2" type="Area3D" parent="Containers/CoinsContainer" unique_id=1114749510 groups=["Coin"] instance=ExtResource("7_dyutv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 13)
+script = ExtResource("8_ry83k")
+
+[node name="Coin3" type="Area3D" parent="Containers/CoinsContainer" unique_id=469050904 groups=["Coin"] instance=ExtResource("7_dyutv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 19)
+script = ExtResource("8_ry83k")
+
+[node name="Coin4" type="Area3D" parent="Containers/CoinsContainer" unique_id=728897689 groups=["Coin"] instance=ExtResource("7_dyutv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 3.55271e-15, 1, 1.55294e-22, -1, 0, -4.37114e-08, 3, 4, 21)
+script = ExtResource("8_ry83k")
+
+[node name="Coin5" type="Area3D" parent="Containers/CoinsContainer" unique_id=930615315 groups=["Coin"] instance=ExtResource("7_dyutv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 3.55271e-15, 1, 1.55294e-22, -1, 0, -4.37114e-08, 11, 4, 21)
+script = ExtResource("8_ry83k")
+
+[node name="Coin6" type="Area3D" parent="Containers/CoinsContainer" unique_id=856195221 groups=["Coin"] instance=ExtResource("7_dyutv")]
+transform = Transform3D(-1, 2.11758e-22, -8.74228e-08, 3.55271e-15, 1, 1.55294e-22, 8.74228e-08, -2.11758e-22, -1, 15, 6, 17)
+script = ExtResource("8_ry83k")
+
+[node name="Coin7" type="Area3D" parent="Containers/CoinsContainer" unique_id=1456752583 groups=["Coin"] instance=ExtResource("7_dyutv")]
+transform = Transform3D(-1, 2.11758e-22, -8.74228e-08, 3.55271e-15, 1, 1.55294e-22, 8.74228e-08, -2.11758e-22, -1, 19, 7, 9)
+script = ExtResource("8_ry83k")
+
+[node name="Coin8" type="Area3D" parent="Containers/CoinsContainer" unique_id=173017309 groups=["Coin"] instance=ExtResource("7_dyutv")]
+transform = Transform3D(-1, 2.11758e-22, -8.74228e-08, 3.55271e-15, 1, 1.55294e-22, 8.74228e-08, -2.11758e-22, -1, 19, 7, -1)
+script = ExtResource("8_ry83k")
+
+[node name="Obstacles" type="Node3D" parent="Containers" unique_id=10795655]
+
+[node name="Saw" type="Area3D" parent="Containers/Obstacles" unique_id=1866674942 instance=ExtResource("9_s8253")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 3)
+script = ExtResource("10_tkkcn")
+
+[node name="Spikes" type="Area3D" parent="Containers/Obstacles" unique_id=2043348026 instance=ExtResource("11_xetqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 4.5)
+script = ExtResource("12_aexi6")
+can_rotate = false
+
+[node name="SpikeBlockWide" type="Area3D" parent="Containers/Obstacles" unique_id=1876891612 instance=ExtResource("13_68ix2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.75, 7)
+script = ExtResource("14_xdvhj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=993789413 groups=["CanvasLayer"] instance=ExtResource("15_05emn")]
+script = ExtResource("16_10qxy")
+target_scene = ExtResource("17_xef1r")
+
+[node name="CoinAudio" type="AudioStreamPlayer" parent="." unique_id=1085507229 groups=["CoinAudio"]]
+stream = ExtResource("18_pdp4c")
+
+[connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]
+[connection signal="body_entered" from="Containers/CoinsContainer/Coin" to="Containers/CoinsContainer/Coin" method="_on_body_entered"]
+[connection signal="body_entered" from="Containers/CoinsContainer/Coin2" to="Containers/CoinsContainer/Coin2" method="_on_body_entered"]
+[connection signal="body_entered" from="Containers/CoinsContainer/Coin3" to="Containers/CoinsContainer/Coin3" method="_on_body_entered"]
+[connection signal="body_entered" from="Containers/CoinsContainer/Coin4" to="Containers/CoinsContainer/Coin4" method="_on_body_entered"]
+[connection signal="body_entered" from="Containers/CoinsContainer/Coin5" to="Containers/CoinsContainer/Coin5" method="_on_body_entered"]
+[connection signal="body_entered" from="Containers/CoinsContainer/Coin6" to="Containers/CoinsContainer/Coin6" method="_on_body_entered"]
+[connection signal="body_entered" from="Containers/CoinsContainer/Coin7" to="Containers/CoinsContainer/Coin7" method="_on_body_entered"]
+[connection signal="body_entered" from="Containers/CoinsContainer/Coin8" to="Containers/CoinsContainer/Coin8" method="_on_body_entered"]
